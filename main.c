@@ -10,6 +10,42 @@ int main(void)
     char line[1024];
     struct processing_element id;
     struct dataline data;
+    int n=20;
+
+    struct dataline *data  = malloc(sizeof(struct dataline));
+    data->soucer = malloc (sizeof (int)*n);
+
+    if (data->source == NULL) {
+        free (retVal);
+        printf("Error allocation Soucer!\n");
+        return NULL;
+    }
+
+    data->target = malloc (sizeof (int)*n);
+
+    if (data->target == NULL) {
+        free (retVal);
+        printf("Error allocation Target!\n");
+        return NULL;
+    }
+
+
+	data->end = malloc (sizeof (int)*n);
+
+    if (data->end == NULL) {
+        free (retVal);
+        printf("Error allocation End!\n");
+        return NULL;
+    }
+
+    data->str = malloc (sizeof (char)*n);
+
+    if (data->str == NULL) {
+        free (retVal);
+        printf("Error allocation Str!\n");
+        return NULL;
+    }
+
 
     file = fopen("./input/testemesh2d.txt", "r");
     if (file == NULL) {
@@ -35,11 +71,13 @@ int main(void)
         fgets(line, sizeof(line), file);
     }
 
-    data.source = malloc(num_lines * sizeof(int));
-    data.target = malloc(num_lines * sizeof(int));
-    data.end = malloc(num_lines * sizeof(int));
+    //data.source = malloc(num_lines * sizeof(int));
+    //data.target = malloc(num_lines * sizeof(int));
+    //data.end = malloc(num_lines * sizeof(int));
 
-    data.str = malloc(num_lines * sizeof(char*));
+    //data.str = malloc(num_lines * sizeof(char*));
+    
+
     for (int i = 0; i < num_lines; i++)
         data.str[i] = malloc((LENGTH + 1) * sizeof(char)); 
 
