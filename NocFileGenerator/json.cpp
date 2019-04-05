@@ -42,12 +42,12 @@ for (i=0; i<= numrouters; i++){
 		
 
 		if((neighborRight(src.x[i],src.y[y]>0).c_str()){
-			fprintf(f, "\t\"right\":""\""+ std::to_string(neighborRight(src.x[i],src.y[i])) + std::to_string(src.x[i]) + """\""",\n", text);
+			fprintf(f, "\t\"right\":""\""+ std::to_string(neighborRight(src.x[i],src.y[i])) + std::to_string(src.y[i]) + """\""",\n", text);
 
 		}
 
 	    if((neighborLeft(src.x[i],src.y[y]>0).c_str()){
-			fprintf(f, "\t\"left\":""\"" + std::to_string(neighborLeft(src.x[i],src.y[i])) + std::to_string(src.x[i]) + """\""",\n", text);
+			fprintf(f, "\t\"left\":""\"" + std::to_string(neighborLeft(src.x[i],src.y[i])) + std::to_string(src.y[i]) + """\""",\n", text);
 
 		}
 
@@ -72,7 +72,7 @@ void *router(void *arg)
 {
 	pthread_mutex_lock(&mutex);
     int id = *((int *) arg);
-
+    int contId = 0;
     for (int i = 0; i < num_lines; i++) {
         if (pe.x[id] != src.x[i] || pe.y[id] != src.y[i]) {
             continue;
@@ -80,26 +80,36 @@ void *router(void *arg)
         else {
             while (src.x[i] != tgt.x[i]) {
                 if (tgt.x[i] > pe.x[id]) {
-                	 src.x[i] += 1;
-                	 right[id]=right[id] + 1;;
+                    src.x[i] += 1;
+                    cont++;          	 
                     printf("Message %d sent to Right (%d%d).\n", i, src.x[i], src.y[i]);
+                    right[i]=right[i] + 1;
+	            	left[i+cont] += 1;
                 }
                 else if (tgt.x[i] < pe.x[id]) {
                     src.x[i] -= 1;
-                    left[id]=left[id] + 1;
+                    cont++;
                     printf("Message %d sent to Left (%d%d).\n", i, src.x[i], src.y[i]);  
+                    left[id]=left[id] + 1;
+                    right[i-cont] += 1;
                 }
             }
+
+            cont =0;
             while (src.y[i] != tgt.y[i]) {
                 if (tgt.y[i] > pe.y[id]) {
                     src.y[i] += 1;
+                    cont+= qt_nodes_y;
+                    printf("Message %d sent to Top (%d%d).\n", i, src.x[i], src.y[i]); 
                     top[id]=top[id] + 1;
-                    printf("Message %d sent to Top (%d%d).\n", i, src.x[i], src.y[i]);  
+                    bottom[i+cont] += 1; 
                 }
                 else if (tgt.y[i] < pe.y[id]) {
                     src.y[i] -= 1;
-                    bottom[id]=bottom[id] + 1;
+                    cont+= qt_nodes_y;
                     printf("Message %d sent to Bottom (%d%d).\n", i, src.x[i], src.y[i]);  
+                    bottom[id]=bottom[id] + 1;
+                    top[i-cont] -= 1;
                 }
             }
             countMes[id] = countMes[id] + 1;
