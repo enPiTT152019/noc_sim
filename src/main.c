@@ -1,11 +1,13 @@
 #include "defs.h"
 #include "noc.h"
+#include "gen_file.h"
 
 int main(int argc, char **argv)
 {
     FILE *file;
     char line[1024];
     unsigned int topology;
+    unsigned int kind_output;
 
     file = fopen(argv[1], "r");
     if (file == NULL) {
@@ -13,12 +15,14 @@ int main(int argc, char **argv)
         exit(-1);
     }
 
-    printf("Topology (0: Mesh, 1: Lorem, 2: Ipsum): ");
+    printf("Topology (0: Mesh, 1: Ring): ");
     scanf("%d", &topology);
 
     switch (topology) {
     default:
     case 0:
+        printf("Output (0: JSON, 1: XML): ");
+        scanf("%d", &kind_output);
         printf("MESH:\n");
         printf("No. of lines: ");
         scanf("%d", &qt_nodes_x);
@@ -37,10 +41,6 @@ int main(int argc, char **argv)
 
         break;
     case 1:
-        printf("Error: Not implemented yet.\n");
-        exit(1);
-        break;
-    case 2:
         printf("Error: Not implemented yet.\n");
         exit(1);
         break;
@@ -126,6 +126,11 @@ int main(int argc, char **argv)
         pthread_join(routers[i], NULL);
     }
 
+    if (!kind_output)
+        create_json();
+    else
+        create_xml();
+    
     free(data.str);
 
     return (0);

@@ -15,23 +15,29 @@ void *router(void *arg)
             while (src.x[i] != tgt.x[i]) {
                 if (tgt.x[i] > pe.x[id]) {
                     src.x[i] += 1;
+                    right[id] = right[id] + 1;
                     printf("Router %d%d sent message to East (%d%d).\n", src.x[i - 1], src.y[i - 1], src.x[i], src.y[i]);
                 }
                 else if (tgt.x[i] < pe.x[id]) {
                     src.x[i] -= 1;
+                    left[id] = left[id] + 1;
                     printf("Router %d%d sent message to West (%d%d).\n", src.x[i + 1], src.y[i + 1], src.x[i], src.y[i]);  
                 }
             }
             while (src.y[i] != tgt.y[i]) {
                 if (tgt.y[i] > pe.y[id]) {
                     src.y[i] += 1;
+                    top[id] = top[id] + 1;
                     printf("Router %d%d sent message sent to North (%d%d).\n", src.x[i - 1], src.y[i - 1], src.x[i], src.y[i]);  
                 }
                 else if (tgt.y[i] < pe.y[id]) {
                     src.y[i] -= 1;
+                    bottom[id] = bottom[id] + 1;
                     printf("Router %d%d sent message sent to South (%d%d).\n", src.x[i + 1], src.y[i + 1], src.x[i], src.y[i]);  
                 }
             }
+
+            count_mes[id] = count_mes[id] + 1;
         }
     }
 
