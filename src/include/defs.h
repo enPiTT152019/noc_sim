@@ -33,6 +33,7 @@ struct target
 };
 
 int num_lines, qt_nodes_x, qt_nodes_y, num_routers, aux_x, aux_y;
+int right[AMOUNT], left[AMOUNT], top[AMOUNT], bottom[AMOUNT], local[AMOUNT], count_mes[AMOUNT];
 struct dataline data;
 struct processing_element pe;
 struct source src;
