@@ -114,14 +114,14 @@
 					"router":
 					{
 						"id": "20",
-						"message_count": "1",
+						"message_count": "0",
 						"ports":
 						{
-							"top": "50.000000%",
-							"bottom": "0.000000%",
-							"left": "50.000000%",
-							"right": "0.000000%",
-							"local": "0.000000%"
+							"top": "-nan%",
+							"bottom": "-nan%",
+							"left": "-nan%",
+							"right": "-nan%",
+							"local": "-nan%"
 						}
 					},
 					"router":
@@ -140,40 +140,40 @@
 					"router":
 					{
 						"id": "00",
-						"message_count": "1",
+						"message_count": "0",
 						"ports":
 						{
-							"top": "0.000000%",
-							"bottom": "0.000000%",
-							"left": "0.000000%",
-							"right": "100.000000%",
-							"local": "0.000000%"
+							"top": "-nan%",
+							"bottom": "-nan%",
+							"left": "-nan%",
+							"right": "-nan%",
+							"local": "-nan%"
 						}
 					},
 					"router":
 					{
 						"id": "11",
-						"message_count": "3",
+						"message_count": "0",
 						"ports":
 						{
-							"top": "0.000000%",
-							"bottom": "33.333332%",
-							"left": "66.666664%",
-							"right": "0.000000%",
-							"local": "0.000000%"
+							"top": "-nan%",
+							"bottom": "-nan%",
+							"left": "-nan%",
+							"right": "-nan%",
+							"local": "-nan%"
 						}
 					},
 					"router":
 					{
 						"id": "21",
-						"message_count": "2",
+						"message_count": "0",
 						"ports":
 						{
-							"top": "0.000000%",
-							"bottom": "50.000000%",
-							"left": "0.000000%",
-							"right": "50.000000%",
-							"local": "0.000000%"
+							"top": "-nan%",
+							"bottom": "-nan%",
+							"left": "-nan%",
+							"right": "-nan%",
+							"local": "-nan%"
 						}
 					},
 					"router":
@@ -192,14 +192,14 @@
 					"router":
 					{
 						"id": "00",
-						"message_count": "1",
+						"message_count": "0",
 						"ports":
 						{
-							"top": "0.000000%",
-							"bottom": "50.000000%",
-							"left": "50.000000%",
-							"right": "0.000000%",
-							"local": "0.000000%"
+							"top": "-nan%",
+							"bottom": "-nan%",
+							"left": "-nan%",
+							"right": "-nan%",
+							"local": "-nan%"
 						}
 					}
 				}
